@@ -503,11 +503,15 @@ class AudioPlayer {
     final invPos = effectiveIndicesInv[currentIndex!];
     var newInvPos = invPos + offset;
     if (newInvPos >= effectiveIndices.length || newInvPos < 0) {
+      // ignore LoopMode
+      /*
       if (loopMode == LoopMode.all) {
         newInvPos %= effectiveIndices.length;
       } else {
         return null;
       }
+      */
+      newInvPos %= effectiveIndices.length;
     }
     final result = effectiveIndices[newInvPos];
     return result;
